@@ -6,7 +6,7 @@ CWD = os.getcwd()
 
 ALL_APTS = []
 
-IGNORE_ROUTE = ["(LAXE)", "(LAXNA)", "(SANE)", "(SNAN)", "(RWY11)", "LAX EAST"]
+IGNORE_ROUTE = ["(LAXE)", "(LAXNA)", "(SANE)", "(SNAN)", "(RWY11)", 'LAX EAST']
 UNIGNORE_ROUTE = ['LAX WEST AND EAST']
 LARGE_LIST = []
 TEC_ROUTE_LIST = []
@@ -69,12 +69,6 @@ def lookupAirportPair(departure, destination):
 
                                 FLAG_IGNORE = True
 
-                            for test2 in UNIGNORE_ROUTE:
-
-                                if test2 not in line[8] and test in line[8]:
-
-                                    FLAG_IGNORE = True
-
                         if not FLAG_IGNORE:
 
                             if line[10][-1] == "R":
@@ -112,15 +106,12 @@ def findTecRoutes(departure, destination):
 
                         if test in area:
 
+                            if test == 'LAX EAST':
+
+                                test = '(LAXE)'
+
                             FLAG[0] = True
                             FLAG[1] += f"{test} "
-
-                        for test2 in UNIGNORE_ROUTE:
-
-                                if test2 not in line[8] and test in line[8]:
-
-                                    FLAG[0] = True
-                                    FLAG[1] += f"({test}) "
 
                     FLAG[1] = FLAG[1].strip()
 
