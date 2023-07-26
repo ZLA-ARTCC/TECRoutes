@@ -48,11 +48,11 @@ def generateRouteCommand(line: list, config):
 
             actualCfg = actualCfg.replace('(LAXE)', '')
 
-        builder += f" [{altitude} {actualCfg}]"
+        builder += f" [{code} {actualCfg} {altitude}]"
 
     else:
 
-        builder += f" [{altitude}]"
+        builder += f" [{code} {altitude}]"
 
     return builder
 
@@ -81,7 +81,7 @@ def generateImpliedCommands(line: list, config):
             parsed = ' '.join(config[1])
             actualCfg = parsed.replace("LAX WEST AND EAST", "(LAXW, LAXE)")
 
-            builder += f" [{line[10]} {altitude} {actualCfg}]"
+            builder += f" [{line[10]} {actualCfg} {altitude}]"
 
         else:
 
